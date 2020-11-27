@@ -12,14 +12,21 @@
       },
       "name": "test-node-app",
       "image": "949696328322.dkr.ecr.us-east-1.amazonaws.com/test-node-app",
-      "memory": 3000,
+      "memory": 256,
       "portMappings": [
         {
-          "containerPort": 80,
+          "containerPort": 8080,
+          "hostPort": 80,
           "protocol": "tcp"
         }
       ],
-      "essential": true
+      "essential": true,
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        }
+      ]
     }
   ]
 }
