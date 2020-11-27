@@ -1,0 +1,15 @@
+{
+  "name": "dockerize_node_app",
+  "version": "1.0.0",
+  "description": "Nodejs on Docker",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Mayowa Adewole <adewolemayowa@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

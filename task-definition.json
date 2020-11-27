@@ -1,0 +1,25 @@
+{
+  "family": "test-node-app",
+  "containerDefinitions": [
+    {
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/test-node-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "name": "test-node-app",
+      "image": "949696328322.dkr.ecr.us-east-1.amazonaws.com/test-node-app",
+      "memory": 3000,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
