@@ -34,6 +34,7 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
     - name: Render Amazon ECS task definition
       id: render-web-container
@@ -41,11 +42,11 @@ jobs:
       with:
         task-definition: task-definition.json
         container-name: test-node-app
-        image: 949696328322.dkr.ecr.us-east-1.amazonaws.com/test-node-app:latest
+        image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy to Amazon ECS service
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.render-web-container.outputs.task-definition }}
-        service: my-service
+        service: test-node-app-service
         cluster: test-node-app-cluster
