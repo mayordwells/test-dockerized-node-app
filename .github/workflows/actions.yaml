@@ -51,3 +51,4 @@ jobs:
         task-definition: ${{ steps.render-web-container.outputs.task-definition }}
         service: test-node-app-service
         cluster: test-node-app-cluster
+        wait-for-service-stability: true
